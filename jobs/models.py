@@ -16,6 +16,9 @@ class Specialty(models.Model):
     title = models.CharField(max_length=120)
     picture = models.URLField(default='https://place-hold.it/100x60')
 
+    def __str__(self):
+        return f'id={self.pk},code= {self.code}, title = {self.title},' \
+               f' picture = {self.picture}'
 
 class Vacancy(models.Model):
     title = models.CharField(max_length=200)
@@ -26,3 +29,8 @@ class Vacancy(models.Model):
     salary_min = models.IntegerField()
     salary_max = models.IntegerField()
     published_at = models.DateField()
+
+    def __str__(self):
+        return f'id={self.pk},specialty= {self.specialty},skills={self.skills},description={self.description},' \
+               f'salary_min = {self.salary_min}, title = {self.title},' \
+               f'salary_max = {self.salary_max}, published_at = {self.published_at}, company = {self.company}'

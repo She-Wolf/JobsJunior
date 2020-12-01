@@ -18,7 +18,12 @@ if __name__ == '__main__':
         )
     print(bd_company)
 
-
+    for specialty in specialties:
+        bd_specialty = Specialty.objects.create(
+            title=specialty.get('title'),
+            code=specialty.get('code'),
+        )
+    print(bd_specialty)
 
     for vacancy in jobs:
         bd_vacancy = Vacancy.objects.create(
@@ -32,10 +37,3 @@ if __name__ == '__main__':
             published_at = vacancy.get('posted'),
         )
     print(bd_vacancy)
-
-    for specialty in specialties:
-        bd_specialty = Specialty.objects.create(
-            title=specialty.get('title'),
-            code=specialty.get('code'),
-        )
-    print(bd_specialty)

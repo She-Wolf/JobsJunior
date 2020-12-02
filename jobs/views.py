@@ -35,7 +35,12 @@ def speciality(request,speciality_name):
     return render(request, 'speciality.html')
 
 def company(request, company_id):
-    return render(request, 'company.html',{})
+    company = Company.objects.get(id=company_id)
+    vacancies = Vacancy.objects.filter(company = company_id )
+    vacancies_count = vacancies.count()
+    return render(request, 'company.html',{'company':company,
+                                           'vacancies':vacancies,
+                                           'vacancies_count':vacancies_count})
 
 def vacancy(request, vacancy_id):
     vacancy = Vacancy.objects.get(id = vacancy_id)

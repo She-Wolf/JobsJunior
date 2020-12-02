@@ -35,6 +35,7 @@ def speciality(request,speciality_id):
     vacancies = Vacancy.objects.filter(specialty = speciality.pk )
     vacancies_count = vacancies.count()
     return render(request, 'speciality.html',{'speciality':speciality,
+                                              'vacancies': vacancies,
                                               'vacancies_count':vacancies_count})
 
 def company(request, company_id):

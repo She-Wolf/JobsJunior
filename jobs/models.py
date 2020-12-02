@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Company(models.Model):
     name = models.CharField(max_length=120)
     location = models.CharField(max_length=120)
@@ -11,6 +12,7 @@ class Company(models.Model):
         return f'id={self.pk},name= {self.name}, location = {self.location},' \
                f' description = {self.description} , employee_count = {self.employee_count}'
 
+
 class Specialty(models.Model):
     code = models.CharField(max_length=120)
     title = models.CharField(max_length=120)
@@ -19,6 +21,7 @@ class Specialty(models.Model):
     def __str__(self):
         return f'id={self.pk},code= {self.code}, title = {self.title},' \
                f' picture = {self.picture}'
+
 
 class Vacancy(models.Model):
     title = models.CharField(max_length=200)

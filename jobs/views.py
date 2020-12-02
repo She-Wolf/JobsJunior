@@ -15,8 +15,10 @@ def index(request):
     return render(request, 'index.html')
 
 def vacancies(request):
-    vacancies = Vacancy.objects.filter()
-    return render(request, 'vacancies.html',{'vacancies':vacancies})
+    vacancies = Vacancy.objects.all()
+    vacancies_count = Vacancy.objects.count()
+    return render(request, 'vacancies.html',{'vacancies':vacancies,
+                                             'vacancies_count':vacancies_count})
 
 def specialization(request,specialization_name):
     return render(request, 'specialization.html')

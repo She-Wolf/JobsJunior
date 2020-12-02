@@ -1,6 +1,7 @@
 import os
 import django
 
+
 os.environ["DJANGO_SETTINGS_MODULE"] = 'conf.settings'
 django.setup()
 
@@ -28,7 +29,7 @@ if __name__ == '__main__':
     for vacancy in jobs:
         bd_vacancy = Vacancy.objects.create(
             title = vacancy.get('title'),
-            specialty = vacancy.get('specialty'),
+            specialty = Specialty.objects.get(code = vacancy.get('specialty')),
             company = vacancy.get('company'),
             skills =  vacancy.get('skills'),
             description = vacancy.get('description'),

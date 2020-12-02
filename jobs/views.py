@@ -12,7 +12,17 @@ def custom_handler500(request):
 
 
 def index(request):
-    return render(request, 'index.html')
+    specialities = Specialty.objects.all()
+    companies = Company.objects.all()
+    speciality_vacancies_count = []
+    # for speciality in specialities:
+    #     speciality_vacancies = Vacancy.objects.filter(specialty = speciality.pk)
+    #     speciality_vacancies_count[speciality] = speciality_vacancies.count()
+
+    return render(request, 'index.html',{'specialities':specialities,
+                                         'companies':companies,
+                                         # 'speciality_vacancies_count':speciality_vacancies_count
+                                         })
 
 def vacancies(request):
     vacancies = Vacancy.objects.all()
@@ -20,8 +30,9 @@ def vacancies(request):
     return render(request, 'vacancies.html',{'vacancies':vacancies,
                                              'vacancies_count':vacancies_count})
 
-def specialization(request,specialization_name):
-    return render(request, 'specialization.html')
+def speciality(request,speciality_name):
+
+    return render(request, 'speciality.html')
 
 def company(request, company_id):
     return render(request, 'company.html',{})

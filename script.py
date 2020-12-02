@@ -9,8 +9,9 @@ from jobs.models import Company, Specialty, Vacancy
 from data import jobs, companies, specialties
 
 if __name__ == '__main__':
+    company_models = {}
     for company in companies:
-        bd_company = Company.objects.create(
+        bd_company = company_models[company['id']]= Company.objects.create(
             name=company.get('title'),
             logo=company.get('logo'),
             employee_count=company.get('employee_count'),
@@ -30,7 +31,7 @@ if __name__ == '__main__':
         bd_vacancy = Vacancy.objects.create(
             title = vacancy.get('title'),
             specialty = Specialty.objects.get(code = vacancy.get('specialty')),
-            company = vacancy.get('company'),
+            company = company_models[vacancy['company']],
             skills =  vacancy.get('skills'),
             description = vacancy.get('description'),
             salary_min = vacancy.get('salary_from'),

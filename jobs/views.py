@@ -25,5 +25,7 @@ def company(request, company_id):
     return render(request, 'company.html',{})
 
 def vacancy(request, vacancy_id):
-    vacancy = Vacancy.objects.filter(id = vacancy_id)
-    return render(request, 'vacancy.html',{'vacancy':vacancy})
+    vacancy = Vacancy.objects.get(id = vacancy_id)
+    skills = vacancy.skills.replace(",", " • ")
+    return render(request, 'vacancy.html',{'vacancy':vacancy,
+                                           'skills':skills})
